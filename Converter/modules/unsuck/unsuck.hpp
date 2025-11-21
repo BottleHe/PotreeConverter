@@ -16,6 +16,9 @@
 #include <cstdint>
 #include <cstring>
 
+#include "cpu.h"
+#include "memory.h"
+
 using std::cout;
 using std::endl;
 using std::to_string;
@@ -43,6 +46,8 @@ static double Infinity = std::numeric_limits<double>::infinity();
 constexpr auto fseek_64_all_platforms = fseeko64;
 #elif defined(WIN32)
 constexpr auto fseek_64_all_platforms = _fseeki64;
+#elif defined(__APPLE__)
+constexpr auto fseek_64_all_platforms = fseeko;
 #endif
 
 
